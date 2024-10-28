@@ -29,6 +29,24 @@ def get_bot_response(user_message):
     
     return "I'm still learning! Could you try rephrasing that?"
 
+    """
+    def get_bot_response(user_message):
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+    
+    try:
+        tokenizer = AutoTokenizer.from_pretrained("model-name")
+        model = AutoModelForCausalLM.from_pretrained("model-name")
+        
+        inputs = tokenizer.encode(user_message, return_tensors="pt")
+        outputs = model.generate(inputs)
+        response = tokenizer.decode(outputs[0])
+        
+        return response
+    except Exception as e:
+        print(f"Model error: {e}")
+        return "I'm having trouble processing your request right now."
+    """
+
 @app.route('/')
 def home():
     return render_template('chat.html')
